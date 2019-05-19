@@ -36,13 +36,13 @@ OBJ += $(addprefix $(OBJ_DIR), $(STRLEN_OBJ))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(LIB) -o $(NAME) $(OBJ) $(OBJ_DIR)main.o
+	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $(OBJ) $(OBJ_DIR)main.o
 	@echo "[INFO] $(NAME) executable created"
 
 $(OBJ_DIR)%.o: $(STRLEN_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(FLAGS) $(INC) -c $< -o $@
-	$(CC) $(FLAGS) $(INC) -c main.c -o $(OBJ_DIR)main.o
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC) -c main.c -o $(OBJ_DIR)main.o
 
 clean:
 	@if [ -d "./$(OBJ_DIR)" ]; then\
