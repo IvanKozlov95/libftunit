@@ -41,7 +41,6 @@ int			launch_tests(t_unit_test	**testlist)
 	int				success;
 	int				total;
 	int				pid;
-	int				ret;
 	t_unit_test		*test;
 
 	success = 0;
@@ -50,7 +49,7 @@ int			launch_tests(t_unit_test	**testlist)
 	while (test)
 	{
 		pid = new_process();
-		if ((pid < 0)
+		if ((pid < 0))
 			return (KO);
 		else if (pid == 0)
 			execute_test(test);
