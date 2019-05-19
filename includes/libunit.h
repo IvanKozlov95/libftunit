@@ -22,10 +22,14 @@
 # define SEGV	(11)
 # define BUSERR (10)
 
+# define RED	"\033[0;31m"
+# define GREEN	"\033[0;32m"
+# define BLUE	"\033[1;34m"
+
 typedef struct			s_unit_test
 {
 	char				*name;
-	int					(*f (void);
+	int					(*f) (void);
 	struct s_unit_test	*next;
 }						t_unit_test;
 
