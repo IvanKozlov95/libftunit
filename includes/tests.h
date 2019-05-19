@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_launcher.c                                      :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 14:22:38 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 03:28:25 by ivankozlov       ###   ########.fr       */
+/*   Created: 2019/05/19 02:04:25 by ivankozlov        #+#    #+#             */
+/*   Updated: 2019/05/19 03:27:29 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
-#include "libunit.h"
+#ifndef TESTS_H
+# define TESTS_H
 
-int	strlen_launcher(void)
-{
-	t_unit_test	*testlist;
+int		strlen_launcher(void);
+int		basic_test(void);
+int		null_test(void);
 
-	puts("STRLEN:");
-	load_test(&testlist, "Basic test", &basic_test);
-	load_test(&testlist, "NULL test", &null_test);
-	return (launch_tests(&testlist));
-}
+#endif

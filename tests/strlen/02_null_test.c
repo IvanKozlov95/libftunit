@@ -3,11 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   02_null_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julee <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:22:47 by julee             #+#    #+#             */
-/*   Updated: 2019/05/18 14:22:49 by julee            ###   ########.fr       */
+/*   Updated: 2019/05/19 03:27:34 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include <string.h>
 
+int	null_test(void)
+{
+	ft_strlen(NULL);
+	return (0);
+}
