@@ -3,34 +3,53 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: julee <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/18 13:26:34 by julee             #+#    #+#              #
-#    Updated: 2019/05/18 13:26:36 by julee            ###   ########.fr        #
+#    Updated: 2019/05/19 02:09:44 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libunit.a
 
 CC := gcc
+CFLAGS := -Wall -Wextra -Werror
 
 RM := rm -f
 
-CFLAGS := -Wall -Wextra -Werror
+LIBFT_DIR = libft/
+TESTS_DIR = tests/
 
-INC := includes
+LIB = $(LIBFT_DIR)libft.a
 
-SRCS := framework/
+LIBFT_INC = libft/includes/
+INC_DIR := includes/
+INC = -I $(INC_DIR) -I $(LIBFT_INC)
 
-OBJS := $(SRCS:.c=.o)
+FRM_DIR := framework/
+OBJ_DIR = obj/
+
+FRM_SRC = $(notdir $(wildcard $(FRM_DIR)*.c))
+FRM_OBJ = $(FRM_SRC:%.c=%.o)
+
+SRCS = $(addprefix $(FRM_DIR), $(FRM_SRC))
+OBJS = $(FRM_OBJ)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+test: $(NAME)
+	@make -C $(TESTS_DIR)
+
+$(LIB):
+	@make -C $(LIBFT_DIR)
+
+$(NAME): $(LIB) $(OBJS)
+	@ar rc $(NAME) $(OBJS) $(LIB)
+	@ranlib $(NAME)
 
 $(OBJS):
-	$(CC) $(CFLAGS) -I $(INC) -c $(SRCS)
+	echo $(SRCS)
+	$(CC) $(CFLAGS) $(INC) -c $(SRCS)
 
 clean:
 	$(RM) $(OBJS)
