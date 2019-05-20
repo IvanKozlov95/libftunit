@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 02:08:21 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/19 20:23:33 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 21:41:41 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ int		main(void)
 {
 	strcmp_launcher();
 	strlen_launcher();
+	strdup_launcher();
 }

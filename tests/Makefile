@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/19 02:10:56 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/19 20:16:00 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/19 21:42:13 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,17 @@ STRCMP_SRC = $(notdir $(wildcard $(STRCMP_DIR)*.c))
 STRCMP_OBJ_FILES = $(STRCMP_SRC:%.c=%.o)
 STRCMP_OBJ = $(addprefix $(STRCMP_DIR), $(STRCMP_OBJ_FILES))
 
+STRDUP_DIR = strdup/
+STRDUP_SRC = $(notdir $(wildcard $(STRDUP_DIR)*.c))
+STRDUP_OBJ_FILES = $(STRDUP_SRC:%.c=%.o)
+STRDUP_OBJ = $(addprefix $(STRDUP_DIR), $(STRDUP_OBJ_FILES))
+
 # SRC = $(addprefix $(STRLEN_DIR), $(STRLEN_SRC))
 # SRC += $(addprefix $(STRCMP_DIR), $(STRCMP_SRC))
 OBJ = $(FUNC_OBJ)
 OBJ += $(addprefix $(OBJ_DIR), $(STRLEN_OBJ))
 OBJ += $(addprefix $(OBJ_DIR), $(STRCMP_OBJ))
+OBJ += $(addprefix $(OBJ_DIR), $(STRDUP_OBJ))
 
 all: $(NAME)
 
@@ -64,6 +70,10 @@ $(OBJ_DIR)$(STRCMP_DIR)%.o: $(STRCMP_DIR)%.c
 
 $(OBJ_DIR)$(STRLEN_DIR)%.o: $(STRLEN_DIR)%.c
 	@mkdir -p $(OBJ_DIR)$(STRLEN_DIR)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+$(OBJ_DIR)$(STRDUP_DIR)%.o: $(STRDUP_DIR)%.c
+	@mkdir -p $(OBJ_DIR)$(STRDUP_DIR)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 # $(OBJ_DIR)%.o: $(STRLEN_DIR)%.c
