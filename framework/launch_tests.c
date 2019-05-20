@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:43:21 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 16:35:00 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 21:02:55 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	get_status(int *success)
 
 	wait(&status);
 	//if normaly exited => true && when normaly exited return value
+
 	if (WIFEXITED(status) && !WEXITSTATUS(status))
 		(*success)++;
 	return (status);
@@ -41,7 +42,7 @@ static int	get_status(int *success)
 static void	print_test_result(t_unit_test *t, int status)
 {
 	static char		*statuses[] = {
-		"CRASH", "OK", 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		"KO", "OK", 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		"BUS ERROR", "SEGV",
 	};
 	char			**status_ok;
@@ -50,6 +51,8 @@ static void	print_test_result(t_unit_test *t, int status)
 
 	status_ok = statuses + 1;
 	color = status == OK ? GRN : RED;
+	if (status == NEG_VAL)
+		status = KO;
 	if (KO <= status && status <= SEGV)
 		status_message = *(status_ok + status);
 	else
