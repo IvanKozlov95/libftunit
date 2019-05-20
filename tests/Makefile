@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/19 02:10:56 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/19 17:27:35 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/19 20:16:00 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,21 @@ FUNC_SRC = $(notdir $(wildcard $(FUNC_DIR)*.c))
 FUNC_OBJ_FILES = $(FUNC_SRC:%.c=%.o)
 FUNC_OBJ = $(addprefix $(OBJ_DIR)$(FUNC_DIR), $(FUNC_OBJ_FILES))
 
-
 STRLEN_DIR = strlen/
 STRLEN_SRC = $(notdir $(wildcard $(STRLEN_DIR)*.c))
-STRLEN_OBJ = $(STRLEN_SRC:%.c=%.o)
+STRLEN_OBJ_FILES = $(STRLEN_SRC:%.c=%.o)
+STRLEN_OBJ = $(addprefix $(STRLEN_DIR), $(STRLEN_OBJ_FILES))
 
-SRC = $(addprefix $(STRLEN_DIR), $(STRLEN_SRC))
+STRCMP_DIR = strcmp/
+STRCMP_SRC = $(notdir $(wildcard $(STRCMP_DIR)*.c))
+STRCMP_OBJ_FILES = $(STRCMP_SRC:%.c=%.o)
+STRCMP_OBJ = $(addprefix $(STRCMP_DIR), $(STRCMP_OBJ_FILES))
+
+# SRC = $(addprefix $(STRLEN_DIR), $(STRLEN_SRC))
+# SRC += $(addprefix $(STRCMP_DIR), $(STRCMP_SRC))
 OBJ = $(FUNC_OBJ)
 OBJ += $(addprefix $(OBJ_DIR), $(STRLEN_OBJ))
+OBJ += $(addprefix $(OBJ_DIR), $(STRCMP_OBJ))
 
 all: $(NAME)
 
@@ -49,11 +56,20 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)$(FUNC_DIR)%.o: $(FUNC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)$(FUNC_DIR)
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
-$(OBJ_DIR)%.o: $(STRLEN_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 	$(CC) $(CFLAGS) $(INC) -c main.c -o $(OBJ_DIR)main.o
+
+$(OBJ_DIR)$(STRCMP_DIR)%.o: $(STRCMP_DIR)%.c
+	@mkdir -p $(OBJ_DIR)$(STRCMP_DIR)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+$(OBJ_DIR)$(STRLEN_DIR)%.o: $(STRLEN_DIR)%.c
+	@mkdir -p $(OBJ_DIR)$(STRLEN_DIR)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+# $(OBJ_DIR)%.o: $(STRLEN_DIR)%.c
+# 	@mkdir -p $(OBJ_DIR)
+# 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+# 	$(CC) $(CFLAGS) $(INC) -c main.c -o $(OBJ_DIR)main.o
 
 clean:
 	@if [ -d "./$(OBJ_DIR)" ]; then\
