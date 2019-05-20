@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   02_null_test.c                                     :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
+/*   By: julee <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 14:22:47 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 17:28:22 by ivankozlov       ###   ########.fr       */
+/*   Created: 2018/07/11 10:55:44 by julee             #+#    #+#             */
+/*   Updated: 2018/08/09 14:26:46 by julee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
-#include <string.h>
-
-int	null_test(void)
+char    *ft_strcpy(char *dst, const char *src)
 {
-	ft_strlen(NULL);
-	return (0);
+        char *ptr;
+
+        ptr = dst;
+        while (*src)
+                *dst++ = *src++;
+        *dst = '\0';
+        return (ptr);
 }
