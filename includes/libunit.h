@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 13:27:25 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 04:19:06 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 20:41:36 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # define KO		(-1)
 # define SEGV	(11)
 # define BUSERR (10)
+
+/*
+** Underflow negative return value, a magic number. ¯\_(ツ)_/¯
+*/
+
+# define NEG_VAL (65280)
 
 typedef struct			s_unit_test
 {
