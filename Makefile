@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/18 13:26:34 by julee             #+#    #+#              #
-#    Updated: 2019/05/19 02:09:44 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/19 22:11:25 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ all: $(NAME)
 
 test: $(NAME)
 	@make -C $(TESTS_DIR)
+	$(TESTS_DIR)unit_test
 
 $(LIB):
 	@make -C $(LIBFT_DIR)
@@ -53,8 +54,10 @@ $(OBJS):
 
 clean:
 	$(RM) $(OBJS)
+	@make clean -C $(TESTS_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
+	@make fclean -C $(TESTS_DIR)
 
 re: fclean all
