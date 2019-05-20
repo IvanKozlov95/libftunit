@@ -6,7 +6,7 @@
 #    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/19 02:10:56 by ivankozlov        #+#    #+#              #
-#    Updated: 2019/05/19 03:22:37 by ivankozlov       ###   ########.fr        #
+#    Updated: 2019/05/19 17:27:35 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,18 @@ LIB = -L ../libft -lft -L .. -lunit
 
 OBJ_DIR = obj/
 
+FUNC_DIR = functions/
+FUNC_SRC = $(notdir $(wildcard $(FUNC_DIR)*.c))
+FUNC_OBJ_FILES = $(FUNC_SRC:%.c=%.o)
+FUNC_OBJ = $(addprefix $(OBJ_DIR)$(FUNC_DIR), $(FUNC_OBJ_FILES))
+
+
 STRLEN_DIR = strlen/
 STRLEN_SRC = $(notdir $(wildcard $(STRLEN_DIR)*.c))
 STRLEN_OBJ = $(STRLEN_SRC:%.c=%.o)
 
 SRC = $(addprefix $(STRLEN_DIR), $(STRLEN_SRC))
+OBJ = $(FUNC_OBJ)
 OBJ += $(addprefix $(OBJ_DIR), $(STRLEN_OBJ))
 
 all: $(NAME)
@@ -38,6 +45,10 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(LIB) -o $(NAME) $(OBJ) $(OBJ_DIR)main.o
 	@echo "[INFO] $(NAME) executable created"
+
+$(OBJ_DIR)$(FUNC_DIR)%.o: $(FUNC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)$(FUNC_DIR)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(STRLEN_DIR)%.c
 	@mkdir -p $(OBJ_DIR)

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_basic_test.c                                    :+:      :+:    :+:   */
+/*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 14:22:08 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 17:28:07 by ivankozlov       ###   ########.fr       */
+/*   Created: 2019/05/19 17:24:06 by ivankozlov        #+#    #+#             */
+/*   Updated: 2019/05/19 17:24:07 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
-#include <string.h>
+#include <stddef.h>
 
-int	basic_test(void)
+size_t	ft_strlen(const char *s)
 {
-	if (ft_strlen("Hello") == strlen("Hello"))
-		return (0);
-	else
-		return (-1);
+	size_t	res;
+
+	res = 0;
+	while (*s++)
+		res++;
+	return (res);
 }

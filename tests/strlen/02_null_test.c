@@ -6,11 +6,11 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:22:47 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 03:27:34 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 17:28:22 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "tests.h"
 #include <string.h>
 
 int	null_test(void)
