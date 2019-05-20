@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 20:17:41 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/19 21:44:23 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 22:18:19 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <stdio.h>
 
-int strcmp_basic_test(void)
+int		strcmp_basic_test(void)
 {
 	int		user;
 	int		system;

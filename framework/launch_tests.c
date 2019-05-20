@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:43:21 by julee             #+#    #+#             */
-/*   Updated: 2019/05/19 21:02:55 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 22:15:51 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static int	new_process(void)
 {
 	int		pid;
-	
+
 	if ((pid = fork()) < 0)
 		ft_printf("Failed to fork new process");
 	return (pid);
 }
 
-static void	execute_test(t_unit_test	*test)
+static void	execute_test(t_unit_test *test)
 {
 	exit((test->f() == OK) ? OK : KO);
 }
@@ -32,8 +32,6 @@ static int	get_status(int *success)
 	int		status;
 
 	wait(&status);
-	//if normaly exited => true && when normaly exited return value
-
 	if (WIFEXITED(status) && !WEXITSTATUS(status))
 		(*success)++;
 	return (status);

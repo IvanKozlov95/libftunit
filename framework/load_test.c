@@ -6,13 +6,13 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 01:39:04 by ivankozlov        #+#    #+#             */
-/*   Updated: 2019/05/19 04:38:20 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/05/19 22:15:31 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void	load_test(t_unit_test	**testlist, char *name, int (*f) (void))
+void	load_test(t_unit_test **testlist, char *name, int (*f) (void))
 {
 	t_unit_test		*new;
 	t_unit_test		*tmp;
